@@ -33,9 +33,12 @@ class CarListView(generic.ListView):
 
 class CarDetailView(generic.DetailView):
     model = Car
+    queryset = (Car.objects.select_related("manufacturer")
+                .order_by("manufacturer__name")
+                .prefetch_related("drivers"))
 
 
-class DriversListView(generic.ListView):
+class DriverListView(generic.ListView):
     model = Driver
     context_object_name = "driver_list"
     template_name = "taxi/driver_list.html"
@@ -45,4 +48,4 @@ class DriversListView(generic.ListView):
 
 class DriverDetailView(generic.DetailView):
     model = Driver
-    queryset = Driver.objects.prefetch_related("cars")
+    queryset = Driver.objects.prefetch_related("cars__manufacturer")

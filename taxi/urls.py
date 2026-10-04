@@ -4,7 +4,7 @@ from django.urls import path
 from .views import (
     index,
     ManufacturerListView,
-    DriversListView,
+    DriverListView,
     CarListView,
     CarDetailView,
     DriverDetailView
@@ -30,7 +30,7 @@ urlpatterns = [
     ),
     path(
         "drivers/",
-        DriversListView.as_view(),
+        DriverListView.as_view(),
         name="driver-list"
     ),
     path(
