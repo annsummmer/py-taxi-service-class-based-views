@@ -14,7 +14,7 @@
       <tbody>
       {% for car in car_list %}
         <tr>
-          <td>{{ car.pk }}</td>
+          <td><a href="{{ car.get_absolute_url }}">{{ car.pk }}</a></td>
           <td>{{ car.model }}</td>
           <td>{{ car.manufacturer.name }}</td>
           <td>
@@ -29,6 +29,6 @@
       </tbody>
     </table>
   {% else %}
-    <p>There are no Cars</p>
+    <p>No cars!</p>
   {% endif %}
 {% endblock %}

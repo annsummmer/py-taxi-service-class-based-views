@@ -8,14 +8,14 @@
     <h3>Drivers:</h3>
     {% for driver in car.drivers.all %}
       <hr>
-      <p class="text-muted">{{ driver.id }}</p>
+      <p class="text-muted"><a href="{{ driver.get_absolute_url }}">{{ driver.id }}</a></p>
       <p>{{ driver.first_name }} {{ driver.last_name }}
       {% if driver.license_number %}
         {{ driver.license_number }}
       {% endif %}
       </p>
     {% empty %}
-      <p>No car!</p>
+      <p>No drivers!</p>
     {% endfor %}
   </div>
 {% endblock %}
